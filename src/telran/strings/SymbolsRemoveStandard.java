@@ -1,5 +1,4 @@
 package telran.strings;
-
 public class SymbolsRemoveStandard implements SymbolsRemove {
 
 	@Override

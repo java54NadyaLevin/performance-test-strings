@@ -12,14 +12,18 @@ public class SymbolsRemovePerformanceAppl {
 
 	public static void main(String[] args) {
 		String str = getString(N_SYMBOLS);
-		char symbol = getString(1).toCharArray()[0];
-		
+		String s = "";
+		while (s.length() == 0) {
+			s = getString(1);
+		}
+		char symbol = s.toCharArray()[0];
+
 		SymbolsRemovePerformanceTest testCharsRemove = getTest(str, N_RUNS, "test of SymbolRemoveCharArray",
 				new SymbolsRemoveCharArray(), symbol);
 		SymbolsRemovePerformanceTest testStandardRemove = getTest(str, N_RUNS, "test of SymbolsRemoveStandard",
 				new SymbolsRemoveStandard(), symbol);
-		testCharsRemove.run();
 		testStandardRemove.run();
+		testCharsRemove.run();
 
 	}
 
@@ -30,17 +34,29 @@ public class SymbolsRemovePerformanceAppl {
 
 	private static String getString(int nSymbols) {
 
-		int lowerBound = 65; // Decimal value for space character
+		int lowerBound = 32; // Decimal value for space character
 		int upperBound = 122; // Decimal value for tilde character (~)
+		char[] exclude = { '<', '(', '[', '{', '\\', '^', '-', '=', '$', '!', '|', ']', '}', ')', '?', '*', '+', '.',
+				'>' };
 		StringBuilder randomString = new StringBuilder();
 		Random random = new Random();
 
 		for (int i = 0; i < nSymbols; i++) {
 			int asciiValue = lowerBound + random.nextInt(upperBound - lowerBound + 1);
-			randomString.append((char) asciiValue);
+			boolean isExcluded = false;
+			int j = 0;
+			while (j < exclude.length && isExcluded == false) {
+				if (exclude[j] == (char) asciiValue) {
+					isExcluded = true;
+				}
+				j++;
+			}
+			if (isExcluded == false) {
+				randomString.append((char) asciiValue);
+			}
 		}
 
-		return new String(randomString);
+		return randomString.toString();
 
 	}
 
