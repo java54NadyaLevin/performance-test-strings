@@ -1,10 +1,10 @@
-package telran.performance.strings;
+package telran.performance.strings.remove;
 
 import java.util.Random;
 
-import telran.strings.SymbolsRemove;
-import telran.strings.SymbolsRemoveCharArray;
-import telran.strings.SymbolsRemoveStandard;
+import telran.strings.remove.SymbolsRemove;
+import telran.strings.remove.SymbolsRemoveCharArray;
+import telran.strings.remove.SymbolsRemoveStandard;
 
 public class SymbolsRemovePerformanceAppl {
 	private static final int N_SYMBOLS = 1000;

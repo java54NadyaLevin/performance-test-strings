@@ -1,7 +1,7 @@
-package telran.performance.strings;
+package telran.performance.strings.remove;
 
 import telran.performance.PerformanceTest;
-import telran.strings.SymbolsRemove;
+import telran.strings.remove.SymbolsRemove;
 
 public class SymbolsRemovePerformanceTest extends PerformanceTest {
 	String str;

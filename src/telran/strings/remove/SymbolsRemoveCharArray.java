@@ -1,4 +1,4 @@
-package telran.strings;
+package telran.strings.remove;
 
 public class SymbolsRemoveCharArray implements SymbolsRemove {
 

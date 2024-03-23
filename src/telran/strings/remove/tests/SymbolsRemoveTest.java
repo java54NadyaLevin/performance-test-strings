@@ -1,12 +1,12 @@
-package telran.strings.tests;
+package telran.strings.remove.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import telran.strings.SymbolsRemoveCharArray;
-import telran.strings.SymbolsRemoveStandard;
+import telran.strings.remove.SymbolsRemoveCharArray;
+import telran.strings.remove.SymbolsRemoveStandard;
 
 class SymbolsRemoveTest {
 
