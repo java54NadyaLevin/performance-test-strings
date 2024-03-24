@@ -12,17 +12,8 @@ public class SymbolsRemovePerformanceAppl {
 
 	public static void main(String[] args) {
 		String str = getString(N_SYMBOLS);
-		// String.replaceAll method is considering first parameter as a regex,
-		// so if getString method which generates symbol to remove, generates some
-		// special symbol,
-		// it causes an exception in replaceAll since it want this symbol to be escaped.
-		// So some additional code was added to fix this problem
-		
-		String s = "";
-		while (s.length() == 0) {
-			s = getString(1);
-		}
-		char symbol = s.toCharArray()[0];
+
+		char symbol = getString(1).toCharArray()[0];
 
 		SymbolsRemovePerformanceTest testCharsRemove = getTest("test of SymbolRemoveCharArray", str, N_RUNS,
 				new SymbolsRemoveCharArray(), symbol);
@@ -38,11 +29,10 @@ public class SymbolsRemovePerformanceAppl {
 		return new SymbolsRemovePerformanceTest(displayName, str, nRuns, symbolsRemove, symbol);
 	}
 
-	
 	private static String getString(int nSymbols) {
 
-		int lowerBound = 32; 
-		int upperBound = 122; 
+		int lowerBound = 32;
+		int upperBound = 126;
 
 		StringBuilder randomString = new StringBuilder();
 		Random random = new Random();
@@ -50,27 +40,12 @@ public class SymbolsRemovePerformanceAppl {
 		for (int i = 0; i < nSymbols; i++) {
 			int asciiValue = lowerBound + random.nextInt(upperBound - lowerBound + 1);
 
-			if (!isExcluded(asciiValue)) {
-				randomString.append((char) asciiValue);
-			}
+			randomString.append((char) asciiValue);
+
 		}
 
 		return randomString.toString();
 
-	}
-
-	private static boolean isExcluded(int character) {
-		char[] exclude = { '<', '(', '[', '{', '\\', '^', '-', '=', '$', '!', '|', ']', '}', ')', '?', '*', '+', '.',
-				'>' };
-		boolean isExcluded = false;
-		int i = 0;
-		while (i < exclude.length && !isExcluded) {
-			if (exclude[i] == (char) character) {
-				isExcluded = true;
-			}
-			i++;
-		}
-		return isExcluded;
 	}
 
 }
